@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import javax.swing.*;
+
 /**
  *
  * @author Adm
@@ -145,7 +147,11 @@ public class cadastroVIEW extends javax.swing.JFrame {
         String valor = cadastroValor.getText();
         String status = "A Venda";
         produto.setNome(nome);
-        produto.setValor(Integer.parseInt(valor));
+        try {
+            produto.setValor(Integer.parseInt(valor));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"Campo 'Valor' aceita apenas números!");
+        }
         produto.setStatus(status);
         
         ProdutosDAO produtodao = new ProdutosDAO();
